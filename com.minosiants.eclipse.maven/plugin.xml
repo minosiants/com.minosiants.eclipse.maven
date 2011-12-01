@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+ 	<extension 
+ 		point="org.eclipse.jdt.ui.javaElementFilters">
+ 		<filter
+            targetId="org.eclipse.jdt.ui.PackageExplorer"
+            name="Target Folder"
+            enabled="true"
+            description="hides target folder"
+            pattern="target">
+      </filter>
+         
+    </extension>     
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="M"
+            id="com.minosiants.eclipse.maven.commands.category">
+      </category>
+      <command
+            name="Targets Derived"
+            categoryId="com.minosiants.eclipse.maven.commands.category"
+            id="com.minosiants.eclipse.maven.commands.targetsDerived">
+      </command>
+	  <command
+            name="Add Groovy Src To Build Path"
+            categoryId="com.minosiants.eclipse.maven.commands.category"
+            id="com.minosiants.eclipse.maven.commands.groovyToBuildPath">
+      </command>      
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="com.minosiants.eclipse.maven.commands.targetsDerived"
+            class="com.minosiants.eclipse.maven.handlers.DerivedHandler">
+      </handler>
+      <handler
+            commandId="com.minosiants.eclipse.maven.commands.groovyToBuildPath"
+            class="com.minosiants.eclipse.maven.handlers.GroovySrcHandler">
+      </handler>      
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="com.minosiants.eclipse.maven.commands.targetsDerived"
+            contextId="org.eclipse.ui.contexts.window"
+            sequence="M1+6"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+      <key
+            commandId="com.minosiants.eclipse.maven.commands.groovyToBuildPath"
+            contextId="org.eclipse.ui.contexts.window"
+            sequence="M1+7"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>      
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               label="M"
+               mnemonic="M"
+               id="com.minosiants.eclipse.maven.menus.sampleMenu">
+            <command
+                  commandId="com.minosiants.eclipse.maven.commands.targetsDerived"
+                  mnemonic="S"
+                  id="com.minosiants.eclipse.maven.menus.targetsDerived">
+            </command>
+			<command
+                  commandId="com.minosiants.eclipse.maven.commands.groovyToBuildPath"
+                  mnemonic="S"
+                  id="com.minosiants.eclipse.maven.menus.groovyToBuildPath">
+            </command>            
+         </menu>
+      </menuContribution>
+   </extension>
+
+</plugin>
