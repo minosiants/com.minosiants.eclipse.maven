@@ -12,7 +12,7 @@ import org.eclipse.ui.console.MessageConsole;
 public enum Logger {
 	INSTANCE;
 
-	private String CONSOLE_NAME = "OUA";
+	private String CONSOLE_NAME = "M";
 	private MessageConsole console;
 
 	public void log(String msg) {
